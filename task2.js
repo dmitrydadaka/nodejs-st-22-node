@@ -1,6 +1,6 @@
-const fs = require('fs');
-const util = require('util');
-const csv = require('csvtojson');
+import fs from 'fs';
+import util from 'util';
+import csv from 'csvtojson';
 
 
 csv().fromFile('./csv').then((jsonObj) => {

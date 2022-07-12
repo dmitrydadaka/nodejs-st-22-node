@@ -1,10 +1,8 @@
-const fs = require('fs');
-const {stream, Transform } = require('stream');
-const pipe = require('pipe')
+import { Transform } from 'stream';
 
 const reverse = new Transform({
     transform(chunk, encoding, callback) {
-      callback(null, chunk.reverse());
+      callback(null, chunk.reverse()+'\n');
     },
   });
 process.stdin.pipe(reverse).pipe(process.stdout);
