@@ -1,10 +1,9 @@
 const fs = require('fs');
 const util = require('util');
-const csvFilePath = './data.csv';
 const csv = require('csvtojson');
 
 
-csv().fromFile('./data.csv').then((jsonObj) => {
+csv().fromFile('./csv').then((jsonObj) => {
 
     if(!Array.isArray(jsonObj)) throw Error('Operation failed! Data is not array!');
 
