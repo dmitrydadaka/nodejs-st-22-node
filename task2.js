@@ -3,7 +3,7 @@ import util from 'util';
 import csv from 'csvtojson';
 
 
-csv().fromFile('./csv').then((jsonObj) => {
+csv().fromFile('./csv/data.csv').then((jsonObj) => {
 
     if(!Array.isArray(jsonObj)) throw Error('Operation failed! Data is not array!');
 
