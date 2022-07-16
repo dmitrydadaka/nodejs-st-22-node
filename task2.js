@@ -15,7 +15,7 @@ csv().fromFile('./csv/data.csv').then((jsonObj) => {
         return newObj;
     });
     for (let obj of newData) {
-        fs.appendFile('./data.txt', util.inspect(obj) + "\n", (err) => {
+        fs.appendFile('./data.txt', JSON.stringify(obj) + "\n", (err) => {
             if (err) {
                 throw new Error('Operation failed!');
             }
