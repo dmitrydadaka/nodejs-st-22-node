@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { pipeline, Transform } from 'stream';
 
 const reverse = new Transform({
   transform(chunk, encoding, callback) {
@@ -6,7 +6,12 @@ const reverse = new Transform({
   },
 });
 try {
-  process.stdin.pipe(reverse).pipe(process.stdout);
+  pipeline(
+    process.stdin,
+    reverse,
+    process.stdout,
+    err => console.log(err)
+  )
 }
 catch (err) {
   console.log(err);

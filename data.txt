@@ -1,0 +1,3 @@
+{"book":"firstBook","author":"author1","price":10.55}
+{"book":"secondBook","author":"author2","price":37.22}
+{"book":"thirdBook","author":"author3","price":9.89}

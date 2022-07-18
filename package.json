@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel task1.js -d dist",
@@ -25,6 +24,9 @@
   "devDependencies": {
     "@babel/cli": "^7.18.6",
     "@babel/core": "^7.18.6",
+    "@babel/node": "^7.18.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.18.6",
     "nodemon": "^2.0.19"
   },

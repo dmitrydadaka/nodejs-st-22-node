@@ -1,24 +1,23 @@
-import fs from 'fs';
-import util from 'util';
+import fs, { createWriteStream } from 'fs';
 import csv from 'csvtojson';
 
+const csvReadSettings = {
+    noheader: false,
+    headers: ['book', 'author', 'amount', 'price'],
+    delimiter: 'auto',
+    trim: true,
+    ignoreEmpty: true,
+    colParser: {
+      amount: 'omit',
+      price: function (item) {
+        return Number(item.replace(',', '.'));
+      }
+    },
+    checkType: true
+  }; 
 
-csv().fromFile('./csv/data.csv').then((jsonObj) => {
+const stream = createWriteStream('data.txt');
 
-    if(!Array.isArray(jsonObj)) throw Error('Operation failed! Data is not array!');
-
-    const newData = jsonObj.map((e) => {
-        const newObj = {};
-        for (let key in e) {
-            if (key !== 'amount') newObj[key] = e[key];
-        }
-        return newObj;
-    });
-    for (let obj of newData) {
-        fs.appendFile('./data.txt', JSON.stringify(obj) + "\n", (err) => {
-            if (err) {
-                throw new Error('Operation failed!');
-            }
-        });
-    }
+csv(csvReadSettings).fromFile('./csv/data.csv').subscribe((obj, line) => {
+    stream.write(JSON.stringify(obj)+'\n')
 });
