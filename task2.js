@@ -19,5 +19,6 @@ const csvReadSettings = {
 const stream = createWriteStream('data.txt');
 
 csv(csvReadSettings).fromFile('./csv/data.csv').subscribe((obj, line) => {
-    stream.write(JSON.stringify(obj)+'\n')
+    stream.write(JSON.stringify(obj)+'\n'),
+    err => console.log(err)
 });
